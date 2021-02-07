@@ -1,0 +1,87 @@
+---
+version: 0.1
+n9e:
+  url:
+    base: http://192.168.31.174:11180
+    rdb: http://192.168.31.174:11180
+  token: 9be48eb68cba192a365a290c7cbeb310
+
+pollings:
+- task: "aliyun_ac_res"
+  regions:
+  - name: cn-beijing
+  - name: cn-shanghai
+  - name: cn-zhangjiakou
+  - name: cn-hangzhou
+  - name: cn-qingdao
+  credentials:
+    key:      XXXXXXXX
+    secret:   XXXXXXXX
+  vendor:  aliyun
+  version: 1.0
+  timeout: 60
+  interval: 120
+  nodes:
+  - componentId: instance-1
+    nodeType: instance
+    action: list
+    target:
+      name: vm.name
+      uuid: vm.providerId
+      ident: vm.providerId
+      extend:
+        imageId: vm.imageId
+        instanceChargeType: vm.instanceChargeType
+        flavorId: vm.flavorId
+        status: vm.status
+        securityGroups: vm.securityGroups
+        internetChargeType: vm.internetChargeType
+        keyPairName: vm.keyPairName
+        vpcId: vm.vpcId
+        vSwitchId: vm.vSwitchId
+        floatingIp: vm.floatingIp
+        eipAddress: vm.eipAddress
+        primaryIp: vm.primaryIp
+        expiredAt: vm.expiredAt
+        stoppedMode: vm.stoppedMode
+        osName: vm.osName
+        osType: vm.osType
+        cpu: vm.cpu
+        memory: vm.memory
+      labels:
+        regionId: vm.regionId
+        osType: vm.osType
+        platform: aliyun
+      cate: "vegaops-vm"
+      nid: 12
+  - componentId: vpc-1
+    nodeType: vpc
+    action: list
+    target:
+      name: vm.vpcName
+      uuid: vm.providerId
+      ident: vm.providerId
+      extend:
+        status: vm.status
+        cidrBlock: vm.cidrBlock
+      labels:
+        regionId: vm.regionId
+        platform: aliyun
+      cate: "vegaops-vpc"
+      nid: 12
+  - componentId: subnet-1
+    nodeType: vswitch
+    action: list
+    target:
+      name: vm.name
+      uuid: vm.providerId
+      ident: vm.providerId
+      extend:
+        status: vm.status
+        cidrBlock: vm.cidrBlock
+        vpcId: vm.vpcId
+      labels:
+        regionId: vm.regionId
+        platform: aliyun
+      cate: "vegaops-subnet"
+      nid: 12
