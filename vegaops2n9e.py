@@ -224,8 +224,8 @@ def _load_jobs(config):
             'job': polling,
             'func': _job
         }
-        # schedule.every(
-        #     polling.get('interval', 1800)).seconds.do(_run_threaded, cfg)
+        schedule.every(
+            polling.get('interval', 1800)).seconds.do(_run_threaded, cfg)
         _job(cfg['n9e'], cfg['job'])
 
 
