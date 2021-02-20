@@ -226,7 +226,7 @@ def _load_jobs(config):
         }
         schedule.every(
             polling.get('interval', 1800)).seconds.do(_run_threaded, cfg)
-        _job(cfg['n9e'], cfg['job'])
+        # _job(cfg['n9e'], cfg['job'])
 
 
 def cron_job(config):
