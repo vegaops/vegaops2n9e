@@ -7,6 +7,134 @@ n9e:
   token: 9be48eb68cba192a365a290c7cbeb310
 
 pollings:
+- task: "aliyun_ac_metric"
+  type: metric
+  regions:
+  - name: cn-beijing
+  credentials:
+    key:      XXXXXX
+    secret:   XXXXXX
+  vendor:  aliyun
+  version: 1.0
+  interval: 60
+  nodes:
+  - componentId: metric-1
+    nodeType: metric
+    action: query
+    vars:
+      metaName: CPUUtilization
+      namespace: acs_ecs_dashboard
+    target:
+      metric: cpu_utils
+      endpoint: vm.instanceId
+      timestamp: vm.timestamp
+      step: 60
+      value: vm.value
+      dstype: percentage
+  - componentId: metric-2
+    nodeType: metric
+    action: query
+    vars:
+      metaName: DiskReadBPS
+      namespace: acs_ecs_dashboard
+    target:
+      metric: disk_read
+      endpoint: vm.instanceId
+      timestamp: vm.timestamp
+      step: 60
+      value: vm.value
+      dstype: byteps
+  - componentId: metric-3
+    nodeType: metric
+    action: query
+    vars:
+      metaName: DiskReadIOPS
+      namespace: acs_ecs_dashboard
+    target:
+      metric: disk_read_iops
+      endpoint: vm.instanceId
+      timestamp: vm.timestamp
+      step: 60
+      value: vm.value
+      dstype: gauge
+  - componentId: metric-4
+    nodeType: metric
+    action: query
+    vars:
+      metaName: DiskWriteBPS
+      namespace: acs_ecs_dashboard
+    target:
+      metric: disk_write
+      endpoint: vm.instanceId
+      timestamp: vm.timestamp
+      step: 60
+      value: vm.value
+      dstype: byteps
+  - componentId: metric-5
+    nodeType: metric
+    action: query
+    vars:
+      metaName: DiskWriteIOPS
+      namespace: acs_ecs_dashboard
+    target:
+      metric: disk_write_iops
+      endpoint: vm.instanceId
+      timestamp: vm.timestamp
+      step: 60
+      value: vm.value
+      dstype: gauge
+  - componentId: metric-6
+    nodeType: metric
+    action: query
+    vars:
+      metaName: IntranetInRate
+      namespace: acs_ecs_dashboard
+    target:
+      metric: intranet_in
+      endpoint: vm.instanceId
+      timestamp: vm.timestamp
+      step: 60
+      value: vm.value
+      dstype: bitps
+  - componentId: metric-7
+    nodeType: metric
+    action: query
+    vars:
+      metaName: IntranetOutRate
+      namespace: acs_ecs_dashboard
+    target:
+      metric: intranet_out
+      endpoint: vm.instanceId
+      timestamp: vm.timestamp
+      step: 60
+      value: vm.value
+      dstype: bitps
+  - componentId: metric-8
+    nodeType: metric
+    action: query
+    vars:
+      metaName: InternetInRate
+      namespace: acs_ecs_dashboard
+    target:
+      metric: internet_in
+      endpoint: vm.instanceId
+      timestamp: vm.timestamp
+      step: 60
+      value: vm.value
+      dstype: bitps
+  - componentId: metric-9
+    nodeType: metric
+    action: query
+    vars:
+      metaName: InternetOutRate
+      namespace: acs_ecs_dashboard
+    target:
+      metric: internet_out
+      endpoint: vm.instanceId
+      timestamp: vm.timestamp
+      step: 60
+      value: vm.value
+      dstype: bitps
 - task: "aliyun_ac_res"
   regions:
   - name: cn-beijing
@@ -19,7 +147,7 @@ pollings:
     secret:   XXXXXXXX
   vendor:  aliyun
   version: 1.0
-  timeout: 60
+  timeout: 1800
   interval: 120
   nodes:
   - componentId: instance-1
