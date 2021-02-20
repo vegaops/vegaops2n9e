@@ -137,7 +137,7 @@ def _job_metric(n9e, polling):
             logger.error("Could not find output file %s" % output)
             return
         try:
-            out = yaml.load(open(output, 'r').read())
+            out = yaml.safe_load(open(output, 'r').read())
         except Exception as e:
             logger.error("Failed to load output as %s" % e)
             return
@@ -189,7 +189,7 @@ def _job_resource(n9e, polling):
             logger.error("Could not find output file %s" % output)
             return
         try:
-            out = yaml.load(open(output, 'r').read())
+            out = yaml.safe_load(open(output, 'r').read())
         except Exception as e:
             logger.error("Failed to load output as %s" % e)
             return
@@ -254,7 +254,7 @@ def main():
     if len(argv) >= 3:
         _type = argv[2]
     try:
-        config = yaml.load(open(config_path, 'r').read())
+        config = yaml.safe_load(open(config_path, 'r').read())
     except Exception as e:
         logger.error("Faild to load config file as "
                       "error %s" % e)

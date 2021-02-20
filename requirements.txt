@@ -1,3 +1,4 @@
+pyyaml
 logging
 requests
 schedule
